@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERSTYLE</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family:Arial, sans-serif;
+    background:#faf7f9;
+    color:#222;
+}
+header{
+    height:70px;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 7%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid #eee;
+}
+.logo{
+    font-size:25px;
+    font-weight:800;
+    letter-spacing:4px;
+    color:#c72d72;
+}
+nav{
+    display:flex;
+    gap:30px;
+}
+nav a{
+    text-decoration:none;
+    color:#333;
+    font-weight:bold;
+    font-size:14px;
+}
+.hero{
+    min-height:620px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    padding:70px 8%;
+    background:linear-gradient(135deg,#fff,#fff0f6);
+}
+.hero-text{
+    max-width:570px;
+}
+.small-title{
+    color:#c72d72;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:18px;
+}
+.hero h1{
+    font-size:62px;
+    line-height:1;
+    margin-bottom:25px;
+}
+.hero h1 span{
+    color:#c72d72;
+}
+.hero p{
+    color:#777;
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+.hero img{
+    width:100%;
+    max-width:470px;
+    height:550px;
+    object-fit:cover;
+    border-radius:30px;
+    margin:auto;
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+}
+.primary-btn{
+    background:#c72d72;
+    color:white;
+    border:none;
+    padding:16px 32px;
+    border-radius:35px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.primary-btn:hover{
+    background:#a92460;
+}
+section{
+    padding:80px 7%;
+}
+.heading{
+    text-align:center;
+    margin-bottom:40px;
+}
+.heading h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+.heading p{
+    color:#777;
+}
+.steps{
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    margin-bottom:45px;
+}
+.step{
+    text-align:center;
+    color:#999;
+}
+.step-circle{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#eee;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto auto 7px;
+    font-weight:bold;
+}
+.step.active{
+    color:#c72d72;
+}
+.step.active .step-circle{
+    background:#c72d72;
+    color:white;
+}
+.style-step{
+    display:none;
+}
+.style-step.active{
+    display:block;
+}
+.choice-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+.choice{
+    background:white;
+    padding:25px 15px;
+    border-radius:20px;
+    text-align:center;
+    cursor:pointer;
+    border:2px solid transparent;
+    box-shadow:0 7px 25px rgba(0,0,0,.05);
+    transition:.2s;
+}
+.choice:hover{
+    transform:translateY(-4px);
+}
+.choice.selected{
+    border-color:#c72d72;
+    background:#fff0f6;
+}
+.choice-icon{
+    font-size:38px;
+    margin-bottom:12px;
+}
+.choice h3{
+    font-size:16px;
+    margin-bottom:6px;
+}
+.choice p{
+    font-size:12px;
+    color:#888;
+}
+.continue{
+    text-align:center;
+    margin-top:35px;
+}
+.continue button{
+    background:#222;
+    color:white;
+    border:none;
+    padding:15px 38px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:bold;
+}
+.continue button:hover{
+    background:#c72d72;
+}
+/* RESULTS */
+#results{
+    display:none;
+    background:white;
+}
+.result-header{
+    text-align:center;
+    margin-bottom:40px;
+}
+.result-header h2{
+    font-size:40px;
+    margin-bottom:10px;
+}
+.result-header p{
+    color:#777;
+}
+.look-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+.look-card{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid #eee;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+.main-image{
+    width:100%;
+    height:430px;
+    object-fit:cover;
+}
+.look-body{
+    padding:22px;
+}
+.look-body h3{
+    font-size:23px;
+    margin-bottom:8px;
+}
+.description{
+    color:#777;
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:20px;
+}
+.items{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+.item{
+    background:#faf7f9;
+    border-radius:12px;
+    overflow:hidden;
+}
+.item img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+}
+.item-info{
+    padding:8px;
+}
+.item-info strong{
+    display:block;
+    font-size:11px;
+    color:#c72d72;
+}
+.item-info span{
+    font-size:11px;
+    color:#555;
+}
+.look-actions{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+}
+.save{
+    flex:1;
+    background:#c72d72;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:25px;
+    cursor:pointer;
+}
+.view{
+    flex:1;
+    background:white;
+    border:1px solid #ddd;
+    padding:12px;
+    border-radius:25px;
+    cursor:pointer;
+}
+/* SAVED */
+.saved{
+    background:#faf7f9;
+}
+.saved-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+.saved-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+}
+.saved-card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+.saved-card div{
+    padding:17px;
+}
+.saved-card p{
+    color:#777;
+    font-size:13px;
+}
+.empty{
+    grid-column:1/-1;
+    text-align:center;
+    padding:50px;
+    background:white;
+    border-radius:20px;
+    color:#777;
+}
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+footer span{
+    color:#f276a8;
+}
+@media(max-width:900px){
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+    .hero-text{
+        margin:auto;
+    }
+    .hero img{
+        margin-top:40px;
+    }
+    .choice-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .look-grid{
+        grid-template-columns:1fr;
+        max-width:600px;
+    }
+    .saved-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+@media(max-width:600px){
+    nav{
+        display:none;
+    }
+    .hero{
+        padding:55px 6%;
+    }
+    .hero h1{
+        font-size:45px;
+    }
+    .hero img{
+        height:430px;
+    }
+    section{
+        padding:60px 6%;
+    }
+    .choice-grid{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+    .steps{
+        gap:20px;
+    }
+    .step{
+        font-size:11px;
+    }
+    .look-grid{
+        grid-template-columns:1fr;
+    }
+    .saved-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        HERSTYLE
+    </div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#styler">Find My Look</a>
+        <a href="#saved">Saved</a>
+    </nav>
+</header>
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-text">
+        <div class="small-title">
+            YOUR PERSONAL STYLE COMPANION
+        </div>
+        <h1>
+            Find your
+            <span>perfect look.</span>
+        </h1>
+        <p>
+            Tell HERSTYLE about your occasion,
+            personal style and weather. We'll suggest
+            outfits that actually match the moment.
+        </p>
+        <button
+            class="primary-btn"
+            onclick="startStyler()">
+            Find My Look →
+        </button>
+    </div>
+    <img
+        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=90"
+        alt="Fashion">
+</section>
+<!-- STYLER -->
+<section id="styler">
+    <div class="heading">
+        <div class="small-title">
+            PERSONAL STYLIST
+        </div>
+        <h2>
+            Create your outfit
+        </h2>
+        <p>
+            Answer four quick questions.
+        </p>
+    </div>
+    <div class="steps">
+        <div class="step active" id="indicator1">
+            <div class="step-circle">1</div>
+            Occasion
+        </div>
+        <div class="step" id="indicator2">
+            <div class="step-circle">2</div>
+            Style
+        </div>
+        <div class="step" id="indicator3">
+            <div class="step-circle">3</div>
+            Weather
+        </div>
+        <div class="step" id="indicator4">
+            <div class="step-circle">4</div>
+            Outfit
+        </div>
+    </div>
+    <!-- OCCASION -->
+    <div class="style-step active" id="step1">
+        <div class="heading">
+            <h2>
+                What's the occasion?
+            </h2>
+        </div>
+        <div class="choice-grid">
+            <div class="choice"
+                 onclick="selectChoice(this,'occasion','College')">
+                <div class="choice-icon">🎓</div>
+                <h3>College</h3>
+                <p>Campus & everyday</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'occasion','Date')">
+                <div class="choice-icon">💕</div>
+                <h3>Date</h3>
+                <p>Romantic outing</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'occasion','Birthday')">
+                <div class="choice-icon">🎂</div>
+                <h3>Birthday</h3>
+                <p>Your special day</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'occasion','Party')">
+                <div class="choice-icon">💃</div>
+                <h3>Party</h3>
+                <p>Night out</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'occasion','Wedding')">
+                <div class="choice-icon">💍</div>
+                <h3>Wedding</h3>
+                <p>Wedding guest</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'occasion','Festival')">
+                <div class="choice-icon">🪔</div>
+                <h3>Festival</h3>
+                <p>Festive celebration</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'occasion','Office')">
+                <div class="choice-icon">💼</div>
+                <h3>Office</h3>
+                <p>Professional</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'occasion','Casual')">
+                <div class="choice-icon">☕</div>
+                <h3>Casual</h3>
+                <p>Relaxed day</p>
+            </div>
+        </div>
+        <div class="continue">
+            <button onclick="nextStep(1)">
+                Continue →
+            </button>
+        </div>
+    </div>
+    <!-- STYLE -->
+    <div class="style-step" id="step2">
+        <div class="heading">
+            <h2>
+                What's your style?
+            </h2>
+        </div>
+        <div class="choice-grid">
+            <div class="choice"
+                 onclick="selectChoice(this,'style','Elegant')">
+                <div class="choice-icon">✨</div>
+                <h3>Elegant</h3>
+                <p>Sophisticated</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'style','Cute')">
+                <div class="choice-icon">🌸</div>
+                <h3>Cute</h3>
+                <p>Playful</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'style','Classy')">
+                <div class="choice-icon">🖤</div>
+                <h3>Classy</h3>
+                <p>Timeless</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'style','Trendy')">
+                <div class="choice-icon">🔥</div>
+                <h3>Trendy</h3>
+                <p>Modern</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'style','Traditional')">
+                <div class="choice-icon">👑</div>
+                <h3>Traditional</h3>
+                <p>Ethnic</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'style','Minimal')">
+                <div class="choice-icon">🤍</div>
+                <h3>Minimal</h3>
+                <p>Clean</p>
+            </div>
+        </div>
+        <div class="continue">
+            <button onclick="nextStep(2)">
+                Continue →
+            </button>
+        </div>
+    </div>
+    <!-- WEATHER -->
+    <div class="style-step" id="step3">
+        <div class="heading">
+            <h2>
+                What's the weather?
+            </h2>
+        </div>
+        <div class="choice-grid">
+            <div class="choice"
+                 onclick="selectChoice(this,'weather','Hot')">
+                <div class="choice-icon">☀️</div>
+                <h3>Hot</h3>
+                <p>Sunny & warm</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'weather','Warm')">
+                <div class="choice-icon">🌤️</div>
+                <h3>Warm</h3>
+                <p>Comfortable</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'weather','Cool')">
+                <div class="choice-icon">🌥️</div>
+                <h3>Cool</h3>
+                <p>Slightly chilly</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'weather','Cold')">
+                <div class="choice-icon">❄️</div>
+                <h3>Cold</h3>
+                <p>Winter weather</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'weather','Rainy')">
+                <div class="choice-icon">🌧️</div>
+                <h3>Rainy</h3>
+                <p>Wet weather</p>
+            </div>
+        </div>
+        <div class="continue">
+            <button onclick="nextStep(3)">
+                Continue →
+            </button>
+        </div>
+    </div>
+    <!-- OUTFIT TYPE -->
+    <div class="style-step" id="step4">
+        <div class="heading">
+            <h2>
+                What do you want to wear?
+            </h2>
+        </div>
+        <div class="choice-grid">
+            <div class="choice"
+                 onclick="selectChoice(this,'type','Western')">
+                <div class="choice-icon">👗</div>
+                <h3>Western</h3>
+                <p>Dresses & jeans</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'type','Indian')">
+                <div class="choice-icon">🥻</div>
+                <h3>Indian</h3>
+                <p>Saree & ethnic</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'type','Indo-Western')">
+                <div class="choice-icon">✨</div>
+                <h3>Indo-Western</h3>
+                <p>Fusion style</p>
+            </div>
+            <div class="choice"
+                 onclick="selectChoice(this,'type','Any')">
+                <div class="choice-icon">💫</div>
+                <h3>Surprise Me</h3>
+                <p>Choose for me</p>
+            </div>
+        </div>
+        <div class="continue">
+            <button
+                class="primary-btn"
+                onclick="generateLooks()">
+                ✨ Create My Looks
+            </button>
+        </div>
+    </div>
+</section>
+<!-- RESULTS -->
+<section id="results">
+    <div class="result-header">
+        <div class="small-title">
+            HERSTYLE RECOMMENDS
+        </div>
+        <h2>
+            Your Perfect Looks
+        </h2>
+        <p id="summary"></p>
+    </div>
+    <div
+        class="look-grid"
+        id="lookGrid">
+    </div>
+</section>
+<!-- SAVED -->
+<section class="saved" id="saved">
+    <div class="heading">
+        <div class="small-title">
+            YOUR COLLECTION
+        </div>
+        <h2>
+            Saved Looks
+        </h2>
+        <p>
+            Your favourite outfits.
+        </p>
+    </div>
+    <div
+        class="saved-grid"
+        id="savedGrid">
+        <div class="empty">
+            ❤️
+            <br><br>
+            No saved looks yet.
+        </div>
+    </div>
+</section>
+<footer>
+    ©️ 2026
+    <span>HERSTYLE</span>
+    — Your Personal Style Companion
+</footer>
+<script>
+
+let user = {
+    occasion: "",
+    style: "",
+    weather: "",
+    type: ""
+};
+
+let savedLooks = [];
+
+
+/* =====================================================
+   OUTFIT DATABASE
+   ===================================================== */
+
+const outfitDatabase = [
+
+    /* ================= COLLEGE ================= */
+
+    {
+        title: "Cute Campus",
+        occasion: ["College"],
+        style: ["Cute", "Minimal"],
+        weather: ["Hot", "Warm"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Top", "Lightweight casual top", "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=85"],
+            ["Bottom", "Straight-fit jeans", "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "White sneakers", "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Mini shoulder bag", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Trendy Campus",
+        occasion: ["College"],
+        style: ["Trendy", "Classy"],
+        weather: ["Warm", "Cool"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Top", "Oversized shirt", "https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=500&q=85"],
+            ["Bottom", "Wide-leg jeans", "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Fashion sneakers", "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Crossbody bag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "College Indo-Western",
+        occasion: ["College"],
+        style: ["Traditional", "Minimal", "Cute"],
+        weather: ["Hot", "Warm"],
+        type: ["Indo-Western"],
+        image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Top", "Short kurti", "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=500&q=85"],
+            ["Bottom", "Straight pants", "https://images.unsplash.com/photo-1506629905607-d9f1e0f2e4f8?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Comfortable flats", "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Casual handbag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+
+    /* ================= DATE ================= */
+
+    {
+        title: "Soft Romantic Date",
+        occasion: ["Date"],
+        style: ["Cute", "Elegant"],
+        weather: ["Warm", "Hot"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Dress", "Soft midi dress", "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Elegant heels", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Mini handbag", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Delicate jewellery", "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Classy Dinner Date",
+        occasion: ["Date"],
+        style: ["Elegant", "Classy"],
+        weather: ["Cool", "Warm"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Dress", "Elegant evening dress", "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Classic heels", "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Evening handbag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Minimal jewellery", "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Trendy Date Night",
+        occasion: ["Date"],
+        style: ["Trendy", "Classy"],
+        weather: ["Cool", "Warm"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Top", "Stylish fitted top", "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=85"],
+            ["Skirt", "Fashion skirt", "https://images.unsplash.com/photo-1583496661160-fb5886a13d27?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Strappy heels", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Small shoulder bag", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+
+    /* ================= BIRTHDAY ================= */
+
+    {
+        title: "Birthday Glam",
+        occasion: ["Birthday"],
+        style: ["Elegant", "Trendy"],
+        weather: ["Warm", "Cool"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Dress", "Statement birthday dress", "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Party heels", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Mini evening bag", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Statement jewellery", "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Cute Birthday",
+        occasion: ["Birthday"],
+        style: ["Cute"],
+        weather: ["Hot", "Warm"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Dress", "Cute party dress", "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Cute heels", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Mini bag", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Simple earrings", "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Birthday Trendsetter",
+        occasion: ["Birthday"],
+        style: ["Trendy", "Classy"],
+        weather: ["Cool", "Warm"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1496217590455-aa63a8350eea?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Outfit", "Modern party outfit", "https://images.unsplash.com/photo-1496217590455-aa63a8350eea?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Statement heels", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Fashion bag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Layered jewellery", "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+
+    /* ================= PARTY ================= */
+
+    {
+        title: "Party Glam",
+        occasion: ["Party"],
+        style: ["Elegant", "Trendy"],
+        weather: ["Cool", "Warm"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Dress", "Glamorous party dress", "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Heeled sandals", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Evening clutch", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Statement jewellery", "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Party Chic",
+        occasion: ["Party"],
+        style: ["Classy", "Elegant"],
+        weather: ["Cool", "Warm"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1496217590455-aa63a8350eea?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Dress", "Chic evening dress", "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Classic heels", "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Small clutch", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Elegant earrings", "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Party Trend",
+        occasion: ["Party"],
+        style: ["Trendy"],
+        weather: ["Hot", "Warm", "Cool"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Top", "Statement top", "https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=500&q=85"],
+            ["Skirt", "Trendy skirt", "https://images.unsplash.com/photo-1583496661160-fb5886a13d27?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Fashion heels", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Party bag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+
+    /* ================= WEDDING ================= */
+
+    {
+        title: "Wedding Elegance",
+        occasion: ["Wedding"],
+        style: ["Elegant", "Traditional"],
+        weather: ["Hot", "Warm"],
+        type: ["Indian"],
+        image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Outfit", "Elegant ethnic wear", "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Traditional jewellery", "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Embellished heels", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Traditional clutch", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Wedding Royal",
+        occasion: ["Wedding"],
+        style: ["Traditional", "Elegant"],
+        weather: ["Cool", "Warm"],
+        type: ["Indian"],
+        image: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Outfit", "Rich festive outfit", "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Statement jewellery", "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Elegant footwear", "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Embroidered clutch", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Modern Wedding",
+        occasion: ["Wedding"],
+        style: ["Trendy", "Classy"],
+        weather: ["Cool", "Warm"],
+        type: ["Indo-Western"],
+        image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Outfit", "Modern ethnic outfit", "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Minimal jewellery", "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Modern heels", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Elegant handbag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+
+    /* ================= FESTIVAL ================= */
+
+    {
+        title: "Festive Traditional",
+        occasion: ["Festival"],
+        style: ["Traditional", "Elegant"],
+        weather: ["Hot", "Warm"],
+        type: ["Indian"],
+        image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Outfit", "Traditional ethnic wear", "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Festive jewellery", "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Ethnic footwear", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Ethnic clutch", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Festive Fusion",
+        occasion: ["Festival"],
+        style: ["Trendy", "Traditional"],
+        weather: ["Hot", "Warm"],
+        type: ["Indo-Western"],
+        image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Outfit", "Indo-western outfit", "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Modern ethnic jewellery", "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Fusion footwear", "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Fusion handbag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Festive Minimal",
+        occasion: ["Festival"],
+        style: ["Minimal", "Elegant"],
+        weather: ["Hot", "Warm"],
+        type: ["Indian"],
+        image: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Outfit", "Minimal ethnic outfit", "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=500&q=85"],
+            ["Jewellery", "Delicate jewellery", "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Simple sandals", "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Small ethnic bag", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+
+    /* ================= OFFICE ================= */
+
+    {
+        title: "Office Classic",
+        occasion: ["Office"],
+        style: ["Classy", "Elegant"],
+        weather: ["Warm", "Cool"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Top", "Classic blouse", "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=85"],
+            ["Bottom", "Tailored trousers", "https://images.unsplash.com/photo-1506629905607-d9f1e0f2e4f8?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Office flats", "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Structured handbag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Office Trendy",
+        occasion: ["Office"],
+        style: ["Trendy", "Classy"],
+        weather: ["Cool", "Cold"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Blazer", "Modern blazer", "https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=500&q=85"],
+            ["Bottom", "Wide-leg trousers", "https://images.unsplash.com/photo-1506629905607-d9f1e0f2e4f8?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Modern loafers", "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Structured bag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Office Minimal",
+        occasion: ["Office"],
+        style: ["Minimal", "Elegant"],
+        weather: ["Hot", "Warm"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Top", "Minimal blouse", "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=85"],
+            ["Bottom", "Straight trousers", "https://images.unsplash.com/photo-1506629905607-d9f1e0f2e4f8?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Simple flats", "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Minimal handbag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+
+    /* ================= CASUAL ================= */
+
+    {
+        title: "Everyday Casual",
+        occasion: ["Casual"],
+        style: ["Minimal", "Cute"],
+        weather: ["Hot", "Warm"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Top", "Casual top", "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=85"],
+            ["Jeans", "Everyday denim", "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Sneakers", "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Casual bag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Minimal Casual",
+        occasion: ["Casual"],
+        style: ["Minimal", "Classy"],
+        weather: ["Warm", "Cool"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Top", "Minimal shirt", "https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=500&q=85"],
+            ["Bottom", "Relaxed jeans", "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Simple sneakers", "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Shoulder bag", "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=85"]
+        ]
+    },
+
+    {
+        title: "Trendy Casual",
+        occasion: ["Casual"],
+        style: ["Trendy"],
+        weather: ["Hot", "Warm", "Cool"],
+        type: ["Western"],
+        image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=90",
+        items: [
+            ["Top", "Trendy top", "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=85"],
+            ["Bottom", "Wide-leg denim", "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=85"],
+            ["Shoes", "Fashion sneakers", "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=85"],
+            ["Bag", "Crossbody bag", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=85"]
+        ]
+    }
+
+];
+
+
+/* =====================================================
+   START STYLER
+   ===================================================== */
+
+function startStyler(){
+
+    document.getElementById("styler").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   SELECT OPTION
+   ===================================================== */
+
+function selectChoice(element, type, value){
+
+    const parent = element.parentElement;
+
+    parent.querySelectorAll(".choice").forEach(card => {
+        card.classList.remove("selected");
+    });
+
+    element.classList.add("selected");
+
+    user[type] = value;
+
+}
+
+
+/* =====================================================
+   NEXT STEP
+   ===================================================== */
+
+function nextStep(current){
+
+    let required;
+
+    if(current === 1) required = "occasion";
+    if(current === 2) required = "style";
+    if(current === 3) required = "weather";
+
+    if(!user[required]){
+
+        alert("Please select an option first ❤️");
+
+        return;
+
+    }
+
+    document.getElementById("step" + current)
+        .classList.remove("active");
+
+    document.getElementById("step" + (current + 1))
+        .classList.add("active");
+
+    document.getElementById("indicator" + current)
+        .classList.remove("active");
+
+    document.getElementById("indicator" + (current + 1))
+        .classList.add("active");
+
+}
+
+
+/* =====================================================
+   CALCULATE OUTFIT MATCH
+   ===================================================== */
+
+function calculateScore(outfit){
+
+    let score = 0;
+
+    /*
+       OCCASION = MOST IMPORTANT
+    */
+
+    if(outfit.occasion.includes(user.occasion)){
+        score += 50;
+    }
+
+
+    /*
+       STYLE
+    */
+
+    if(outfit.style.includes(user.style)){
+        score += 25;
+    }
+
+
+    /*
+       WEATHER
+    */
+
+    if(outfit.weather.includes(user.weather)){
+        score += 15;
+    }
+
+
+    /*
+       OUTFIT TYPE
+    */
+
+    if(user.type === "Any"){
+        score += 10;
+    }
+
+    else if(outfit.type.includes(user.type)){
+        score += 20;
+    }
+
+
+    return score;
+
+}
+
+
+/* =====================================================
+   GENERATE LOOKS
+   ===================================================== */
+
+function generateLooks(){
+
+    if(!user.type){
+
+        alert("Please select an outfit type first ❤️");
+
+        return;
+
+    }
+
+
+    /*
+       Score every outfit
+    */
+
+    let scored = outfitDatabase.map(outfit => {
+
+        return {
+            outfit: outfit,
+            score: calculateScore(outfit)
+        };
+
+    });
+
+
+    /*
+       Only use the selected occasion
+    */
+
+    scored = scored.filter(item =>
+        item.outfit.occasion.includes(user.occasion)
+    );
+
+
+    /*
+       Highest matching outfits first
+    */
+
+    scored.sort((a,b) => {
+
+        if(b.score !== a.score){
+            return b.score - a.score;
+        }
+
+        return Math.random() - 0.5;
+
+    });
+
+
+    /*
+       Get top 3
+    */
+
+    let selected = scored
+        .slice(0,3)
+        .map(item => item.outfit);
+
+
+    /*
+       If fewer than 3 exist,
+       don't show unrelated occasion outfits.
+    */
+
+    if(selected.length === 0){
+
+        alert(
+            "We couldn't find an exact match. Try another style or outfit type ❤️"
+        );
+
+        return;
+
+    }
+
+
+    /* =================================================
+       SUMMARY
+    ================================================= */
+
+    document.getElementById("summary").innerText =
+        user.occasion +
+        " • " +
+        user.style +
+        " • " +
+        user.weather +
+        " • " +
+        user.type;
+
+
+    /* =================================================
+       RESULT GRID
+    ================================================= */
+
+    const grid =
+        document.getElementById("lookGrid");
+
+    grid.innerHTML = "";
+
+
+    selected.forEach(look => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "look-card";
+
+
+        card.innerHTML = `
+
+            <img
+                class="main-image"
+                src="${look.image}"
+                alt="${look.title}"
+                loading="lazy"
+            >
+
+            <div class="look-body">
+
+                <h3>
+                    ${look.title}
+                </h3>
+
+                <p class="description">
+                    Perfect for a
+                    <b>${user.occasion}</b>
+                    with a
+                    <b>${user.style}</b>
+                    vibe.
+                </p>
+
+                <div class="items">
+
+                    ${look.items.map(item => `
+
+                        <div class="item">
+
+                            <img
+                                src="${item[2]}"
+                                alt="${item[0]}"
+                                loading="lazy"
+                            >
+
+                            <div class="item-info">
+
+                                <strong>
+                                    ${item[0]}
+                                </strong>
+
+                                <span>
+                                    ${item[1]}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    `).join("")}
+
+                </div>
+
+
+                <div
+                    style="
+                    margin-top:15px;
+                    padding:12px;
+                    background:#fff0f6;
+                    border-radius:12px;
+                    font-size:12px;
+                    color:#777;
+                    "
+                >
+
+                    💡 Recommended because it matches
+                    your
+                    <b>${user.occasion}</b>,
+                    <b>${user.style}</b>
+                    style and
+                    <b>${user.weather}</b>
+                    weather.
+
+                </div>
+
+
+                <div class="look-actions">
+
+                    <button
+                        class="save"
+                        onclick='saveLook(${JSON.stringify(look)})'
+                    >
+                        ❤️ Save
+                    </button>
+
+                    <button
+                        class="view"
+                        onclick='viewLook(${JSON.stringify(look)})'
+                    >
+                        View Look
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+
+        grid.appendChild(card);
+
+    });
+
+
+    document.getElementById("results").style.display = "block";
+
+
+    document.getElementById("results").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   SAVE
+   ===================================================== */
+
+function saveLook(look){
+
+    /*
+       Prevent duplicates
+    */
+
+    const alreadySaved =
+        savedLooks.some(item =>
+            item.title === look.title
+        );
+
+
+    if(alreadySaved){
+
+        alert("This look is already saved ❤️");
+
+        return;
+
+    }
+
+
+    savedLooks.push(look);
+
+    updateSaved();
+
+    alert("❤️ Look saved!");
+
+}
+
+
+/* =====================================================
+   UPDATE SAVED
+   ===================================================== */
+
+function updateSaved(){
+
+    const grid =
+        document.getElementById("savedGrid");
+
+
+    if(savedLooks.length === 0){
+
+        grid.innerHTML = `
+
+            <div class="empty">
+
+                ❤️
+
+                <br><br>
+
+                No saved looks yet.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        savedLooks.map(look => `
+
+            <div class="saved-card">
+
+                <img
+                    src="${look.image}"
+                    alt="${look.title}"
+                >
+
+                <div>
+
+                    <h3>
+                        ${look.title}
+                    </h3>
+
+                    <p>
+                        ${look.description || "Your saved HERSTYLE look."}
+                    </p>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+/* =====================================================
+   VIEW LOOK
+   ===================================================== */
+
+function viewLook(look){
+
+    alert(
+
+        "✨ " + look.title +
+
+        "\n\n" +
+
+        "Recommended for: " +
+        user.occasion +
+
+        "\nStyle: " +
+        user.style +
+
+        "\nWeather: " +
+        user.weather +
+
+        "\nOutfit type: " +
+        user.type +
+
+        "\n\nOUTFIT ITEMS\n\n" +
+
+        look.items
+            .map(item =>
+                "• " +
+                item[0] +
+                " — " +
+                item[1]
+            )
+            .join("\n")
+
+    );
+
+}
+
+</script>
+</body>
+</html>
